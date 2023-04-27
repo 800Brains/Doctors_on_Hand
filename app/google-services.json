@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "566795129584",
+    "project_id": "doctors-on-hand-1fe31",
+    "storage_bucket": "doctors-on-hand-1fe31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566795129584:android:69804bf3ca80f4284ba835",
+        "android_client_info": {
+          "package_name": "team.cybertronics.doctorsonhand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566795129584-vcecsa635gfh36k3i9ak66rmrt4u0lv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAND5fKjt1zwQxtjuKdLxVCVSbE47E8FxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566795129584-vcecsa635gfh36k3i9ak66rmrt4u0lv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

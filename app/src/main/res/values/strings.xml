@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Doctor on Hand</string>
+    <string name="remail">Email Address</string>
+    <string name="rphonenumber">Phone Number</string>
+    <string name="rdateofbirth">Date of Birth</string>
+    <string name="rpassword">Password</string>
+    <string name="rconfirmpassowrd">Confirm Password</string>
+    <string name="semail">Email Address</string>
+    <string name="spassword">Password</string>
+    <string name="rfirstname">First name</string>
+    <string name="rlastname">Last name</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+</resources>
