@@ -121,6 +121,7 @@
             android:background="@color/powder">
 
             <ImageView
+                android:id="@+id/findhospitals"
                 android:src="@drawable/location"
                 android:layout_marginTop="5dp"
                 android:layout_width="80dp"

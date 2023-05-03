@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Always include this permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Include only if your app benefits from precise location access. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,8 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoctorsOnHand"
         tools:targetApi="31">
+        <service
+            android:name=".Notificationservice"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
-            android:name=".Places"
+            android:name=".hospitalsnearme"
             android:exported="false" />
 
         <service

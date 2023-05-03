@@ -4,15 +4,19 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class Homepage extends AppCompatActivity {
 
-    ImageView appointment,chat,home,profile;
+    ImageView appointment,chat,home,profile,findhospitals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class Homepage extends AppCompatActivity {
         chat = findViewById(R.id.chat);
         home = findViewById(R.id.home);
         profile = findViewById(R.id.profile);
+        findhospitals = findViewById(R.id.findhospitals);
 
 
 
@@ -35,38 +40,17 @@ public class Homepage extends AppCompatActivity {
 //                finish();
             }
         });
+
+        findhospitals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String x = null;
+                String y = null;
+                String uri = "geo:"+ x + "," + y +"?q=hospitals+near+me";
+                startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri)));
+            }
+        });
+
     }
 
-
-    // Google maps function
-//    public void check_for_permission(Boolean ACCESS_FINE_LOCATION, Boolean ACCESS_COARSE_LOCATION){
-//        ActivityResultLauncher<String[]> locationPermissionRequest =
-//                registerForActivityResult(new ActivityResultContracts
-//                                .RequestMultiplePermissions(), result -> {
-//                            Boolean fineLocationGranted = result.getOrDefault(
-//                                    Manifest.permission.ACCESS_FINE_LOCATION, false);
-//                            Boolean coarseLocationGranted = result.getOrDefault(
-//                                    Manifest.permission.ACCESS_COARSE_LOCATION,false);
-//                            if (fineLocationGranted != null && fineLocationGranted) {
-//                                // Precise location access granted.
-//                            } else if (coarseLocationGranted != null && coarseLocationGranted) {
-//                                // Only approximate location access granted.
-//                            } else {
-//                                // No location access granted.
-//                            }
-//                        }
-//                );
-//
-//// ...
-//
-//// Before you perform the actual permission request, check whether your app
-//// already has the permissions, and whether your app needs to show a permission
-//// rationale dialog. For more details, see Request permissions.
-//        locationPermissionRequest.launch(new String[] {
-//                Manifest.permission.ACCESS_FINE_LOCATION,
-//                Manifest.permission.ACCESS_COARSE_LOCATION
-//        });
-//
-//
-//    }
 }
