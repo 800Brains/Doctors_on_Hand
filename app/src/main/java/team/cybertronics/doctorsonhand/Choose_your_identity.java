@@ -21,7 +21,7 @@ public class Choose_your_identity extends AppCompatActivity {
         care_seeker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (Choose_your_identity.this, login.class);
+                Intent intent = new Intent (Choose_your_identity.this, register.class);
                 startActivity(intent);
 //                finish();
             }
@@ -30,7 +30,7 @@ public class Choose_your_identity extends AppCompatActivity {
         care_provider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (Choose_your_identity.this, login.class);
+                Intent intent = new Intent (Choose_your_identity.this, care_provider_register.class);
                 startActivity(intent);
 //                finish();
             }

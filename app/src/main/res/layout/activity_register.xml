@@ -8,7 +8,6 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/REGISTER"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -107,7 +106,7 @@
                 android:ems="10"
                 android:hint="@string/rphonenumber"
                 android:textColorHint="@color/black"
-                android:inputType="phone"
+                android:inputType="number|phone"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="260dp"
@@ -129,7 +128,7 @@
                 android:ems="10"
                 android:hint="@string/rdateofbirth"
                 android:textColorHint="@color/black"
-                android:inputType="date"
+                android:inputType="number|date"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="320dp"
@@ -200,8 +199,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="540dp"
                 android:layout_marginStart="170dp"/>
-
-
 
             <Button
                 android:id="@+id/register"

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Always include this permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Include only if your app benefits from precise location access. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.DELIVER_COMPANION_MESSAGES" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoctorsOnHand"
         tools:targetApi="31">
+        <activity
+            android:name=".care_provider_register"
+            android:exported="false" />
+
+
+<!--        &lt;!&ndash; TODO: Replace with your real AdMob app ID &ndash;&gt;-->
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.ads.MobileAdsInitProvider"-->
+<!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
         <service
             android:name=".Notificationservice"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".hospitalsnearme"

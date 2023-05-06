@@ -81,7 +81,8 @@ public class register extends AppCompatActivity {
         spassword = findViewById(R.id.status_password);
         scpassword = findViewById(R.id.status_cpassword);
         gender = findViewById(R.id.gender);
-
+        Spinner spinner = (Spinner) findViewById(R.id.gender);
+        spinner.setBackgroundColor(Color.BLACK);
 
         mAuth = FirebaseAuth.getInstance();
         db= FirebaseFirestore.getInstance();
@@ -181,7 +182,7 @@ public class register extends AppCompatActivity {
             }
         });
 //SPINNER
-        Spinner spinner = (Spinner) findViewById(R.id.gender);
+
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.gender_array, android.R.layout.simple_spinner_item);

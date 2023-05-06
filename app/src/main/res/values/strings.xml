@@ -14,4 +14,58 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string-array name="specialization_array">
+        <item>General Practice Doctor</item>
+        <item>Haematology (Sickle cell and blood disease)</item>
+        <item>Pediatrics (Child health)</item>
+        <item>Women Health, Pregnancy and Delivery (OB/GYN)</item>
+        <item>Cardiologist (Heart and Blood Pressure)</item>
+        <item>Gastroenterology (Ulcer and Hepatitis)</item>
+        <item>Nephrology</item>
+        <item>Endocrine (Diabetes and Hormonal Disease)</item>
+        <item>Urology</item>
+        <item>Dermatology (Skin care)</item>
+        <item>General Surgery</item>
+        <item>Dentistry and Oral care</item>
+        <item>Eye care (Ophthalmology)</item>
+        <item>Mental Health</item>
+        <item>Aviation Medicine</item>
+        <item>Orthopaedics</item>
+        <item>Ear, Nose and Throat (ENT)</item>
+        <item>Neurology, Stroke and Nerve Disease</item>
+        <item>Infectious Diseases (HIV, COVID19)</item>
+        <item>Plastic Surgery</item>
+        <item>Neurosurgery</item>
+        <item>Paediatric Surgery</item>
+        <item>Oncology</item>
+        <item>Histopathology</item>
+        <item>Anaesthesia and Pain Management</item>
+        <item>Community Health (Community and Prevention Medicine)</item>
+        <item>Rheumatology</item>
+        <item>Cardio-thoracic Surgery</item>
+        <item>Anatomic Pathology</item>
+        <item>Forensic Medicine</item>
+        <item>Chemical Pathology (Metabolic Diseases, Electrolyte Imbalances)</item>
+        <item>Clinical Microbiology (Virologists, Immunologist, Parasitology, Chromic Infections)</item>
+        <item>Clinical Psychology</item>
+        <item>Family Medicine</item>
+        <item>Gynecologist</item>
+        <item>General Nurse</item>
+        <item>Mid-wife</item>
+        <item>Community Health Worker</item>
+        <item>Plastic Nurse</item>
+        <item>Trauma Nurse</item>
+        <item>ICU Nurse</item>
+        <item>PERIOP Nursing</item>
+        <item>Anaesthetic Nurse</item>
+        <item>Massage Therapist</item>
+        <item>Therapist</item>
+        <item>Physiotherapist</item>
+        <item>Pharmacist</item>
+        <item>Radiologist (Scans and X-ray)</item>
+        <item>Laboratory Scientist (Laboratory Tests)</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
