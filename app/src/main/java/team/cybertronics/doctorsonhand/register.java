@@ -48,7 +48,7 @@ public class register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore db ;
     // ...
-
+    String sex;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,12 +81,22 @@ public class register extends AppCompatActivity {
         spassword = findViewById(R.id.status_password);
         scpassword = findViewById(R.id.status_cpassword);
         gender = findViewById(R.id.gender);
-        Spinner spinner = (Spinner) findViewById(R.id.gender);
+        Spinner spinner = findViewById(R.id.gender);
         spinner.setBackgroundColor(Color.BLACK);
 
         mAuth = FirebaseAuth.getInstance();
         db= FirebaseFirestore.getInstance();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sex = adapterView.getItemAtPosition(i).toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +160,7 @@ public class register extends AppCompatActivity {
                                         Toast.makeText(register.this, "Authentication successful.",
                                                 Toast.LENGTH_SHORT).show();
                                         try {
-                                            store_profile( get_first_name,  get_last_name,  get_email,  get_phone_number,  get_date_of_birth,  "gender" );
+                                            store_profile( get_first_name,  get_last_name,  get_email,  get_phone_number,  get_date_of_birth,sex);
 
                                         }catch (Exception e)
                                         {
