@@ -38,12 +38,10 @@ public class Homepage extends AppCompatActivity {
 
     ImageView setting,chat,home,profile,findhospitals,note;
     TextView fullname,header_name;
-    Adapter_Doctors adapter_doctors;
-    ArrayList<Model_Doctos> model_doctos;
-    private FirebaseAuth mAuth;
 
-    ProgressDialog progressBar;
+    private FirebaseAuth mAuth;
     FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,28 +52,11 @@ public class Homepage extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         findhospitals = findViewById(R.id.findhospitals);
         note = findViewById(R.id.noti);
-
-        RecyclerView recyclerView =  findViewById(R.id.doctors_recycle_view);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
 
-        model_doctos= new ArrayList<Model_Doctos>();
-        adapter_doctors = new Adapter_Doctors(getApplicationContext(),model_doctos);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(adapter_doctors);
-        progressBar = new ProgressDialog(this);
-        Onload();
         user_details();
-
-
-
-
-
-
-
-
 
         // profile button
         profile.setOnClickListener(new View.OnClickListener() {
@@ -100,46 +81,11 @@ public class Homepage extends AppCompatActivity {
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (Homepage.this, Adapter_Doctors.class);
+                Intent intent = new Intent (Homepage.this, notifications.class);
                 startActivity(intent);
             }
         });
 
-    }
-    public void Onload()
-    {
-        model_doctos.clear();
-        progressBar.show();
-        db.collection("Doctors")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value,
-                                        @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            //Log.w(TAG, "Listen failed.", e);
-                            return;
-                        }
-                        if(value != null) {
-
-
-                            for (QueryDocumentSnapshot doc : value) {
-
-                                Model_Doctos model_doctos1 = doc.toObject(Model_Doctos.class);
-                                model_doctos.add(model_doctos1);
-                            }
-
-                            // circularProgressIndicator.setVisibility(View.GONE);
-
-                            adapter_doctors.notifyDataSetChanged();
-                            progressBar.dismiss();
-                        }else{
-                            progressBar.dismiss();
-                            //circularProgressIndicator.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(), "No data found in Database",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
     public void user_details()
     {
