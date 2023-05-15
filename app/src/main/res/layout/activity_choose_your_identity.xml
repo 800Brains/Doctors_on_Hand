@@ -71,5 +71,37 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/careseeker_registerbtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:layout_marginStart="50dp"
+            android:text="Register"/>
+
+        <Button
+            android:id="@+id/careprovider_registerbtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:layout_marginStart="50dp"
+            android:text="Register"/>
+
+        <Button
+            android:id="@+id/careseeker_loginbtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="50dp"
+            android:text="Login"/>
+
+        <Button
+            android:id="@+id/careprovider_loginbtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="50dp"
+            android:text="Login"/>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
