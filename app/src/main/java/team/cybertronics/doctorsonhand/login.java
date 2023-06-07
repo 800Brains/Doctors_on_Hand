@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class login extends AppCompatActivity {
     TextView  laccount, status, forgotpassword;
     CheckBox showpassword;
     private FirebaseAuth mAuth;
+    ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,13 @@ public class login extends AppCompatActivity {
         laccount = findViewById(R.id.laccount);
         forgotpassword = findViewById(R.id.forgot_password);
         mAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 String get_email = email.getText().toString();
                 String get_password = password.getText().toString();
                 if (!get_email.contains("@")) {
@@ -55,6 +60,7 @@ public class login extends AppCompatActivity {
                 }if(get_password.length()<4){
                     status.setText("The password is weak");
                     status.setTextColor(Color.RED);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }else{
 //                    Toast.makeText(getApplicationContext(),"Valid email", Toast.LENGTH_LONG).show();
 //                    status.setText("The passord is valid");
@@ -110,6 +116,7 @@ public class login extends AppCompatActivity {
                          Log.w(TAG, "createUserWithEmail:failure", task.getException());
                          Toast.makeText(login.this,  task.getException().toString(),
                                  Toast.LENGTH_LONG).show();
+                         progressBar.setVisibility(View.INVISIBLE);
                          // updateUI(null);
                      }
                  }
@@ -118,6 +125,7 @@ public class login extends AppCompatActivity {
                  public void onFailure(@NonNull Exception e) {
                      Toast.makeText(login.this,  e.toString(),
                              Toast.LENGTH_LONG).show();
+                     progressBar.setVisibility(View.INVISIBLE);
                  }
              });
     }

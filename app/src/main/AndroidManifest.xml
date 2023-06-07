@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.DELIVER_COMPANION_MESSAGES" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
 
     <application
         android:allowBackup="true"
@@ -18,14 +22,20 @@
         android:theme="@style/Theme.DoctorsOnHand"
         tools:targetApi="31">
         <activity
+            android:name=".Search"
+            android:exported="false" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
             android:name=".care_provider_register"
-            android:exported="false" />
-
-
-<!--        &lt;!&ndash; TODO: Replace with your real AdMob app ID &ndash;&gt;-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.MobileAdsInitProvider"-->
-<!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
+            android:exported="false" /> <!-- &lt;!&ndash; TODO: Replace with your real AdMob app ID &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.MobileAdsInitProvider" -->
+        <!-- android:value="ca-app-pub-3940256099942544~3347511713"/> -->
         <service
             android:name=".Notificationservice"
             android:enabled="true"
@@ -73,6 +83,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
     </application>
 
 </manifest>

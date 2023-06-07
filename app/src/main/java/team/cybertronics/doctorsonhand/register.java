@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class register extends AppCompatActivity {
     Button btn_register;
     EditText first_name, email, phone_number, date_of_birth, password, confirm_password, last_name;
     TextView account, sfname, semail, sphone_number, sdob, spassword, scpassword, slname;
-    ImageButton google, facebook, twitter;
+    ImageView google, facebook;
     Spinner gender;
     private FirebaseAuth mAuth;
     FirebaseFirestore db ;
@@ -72,7 +73,6 @@ public class register extends AppCompatActivity {
         account = findViewById(R.id.alreadyhaveanaccount);
         google = findViewById(R.id.google);
         facebook = findViewById(R.id.facebook);
-        twitter = findViewById(R.id.twitter);
         sfname = findViewById(R.id.status_fullname);
         slname = findViewById(R.id.status_lastname);
         semail = findViewById(R.id.status_email);

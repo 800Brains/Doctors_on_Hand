@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -54,8 +55,6 @@ public class Homepage extends AppCompatActivity {
         note = findViewById(R.id.noti);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
-
         user_details();
 
         // profile button
@@ -81,7 +80,7 @@ public class Homepage extends AppCompatActivity {
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (Homepage.this, notifications.class);
+                Intent intent = new Intent (Homepage.this, Search.class);
                 startActivity(intent);
             }
         });
