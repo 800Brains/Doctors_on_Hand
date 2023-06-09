@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -33,6 +35,7 @@ public class login extends AppCompatActivity {
     CheckBox showpassword;
     private FirebaseAuth mAuth;
     ProgressBar progressBar;
+    SharedPreferences sharedPreferences;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,57 +51,64 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
+        sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("status", "").equals("on")) {
+            Intent intent = new Intent(login.this, Homepage.class);
+            startActivity(intent);
+            finish();
+        } else {
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-                String get_email = email.getText().toString();
-                String get_password = password.getText().toString();
-                if (!get_email.contains("@")) {
-                    Toast.makeText(getApplicationContext(), "The use entered @", Toast.LENGTH_LONG).show();
-                }if(get_password.length()<4){
-                    status.setText("The password is weak");
-                    status.setTextColor(Color.RED);
-                    progressBar.setVisibility(View.INVISIBLE);
-                }else{
+            btn_login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    String get_email = email.getText().toString();
+                    String get_password = password.getText().toString();
+                    if (!get_email.contains("@")) {
+                        Toast.makeText(getApplicationContext(), "The use entered @", Toast.LENGTH_LONG).show();
+                    }
+                    if (get_password.length() < 4) {
+                        status.setText("The password is weak");
+                        status.setTextColor(Color.RED);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    } else {
 //                    Toast.makeText(getApplicationContext(),"Valid email", Toast.LENGTH_LONG).show();
 //                    status.setText("The passord is valid");
 //                    status.setTextColor(Color.GREEN);
 //                    status.setVisibility(View.GONE);
-                    login(get_email,get_password);
-                }
+                        login(get_email, get_password);
+                    }
 
-            }
-        });
-        laccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (login.this, register.class);
-                startActivity(intent);
-//                finish();
-            }
-        });
-        showpassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(showpassword.isChecked()){
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else{
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
-            }
-        });
-        forgotpassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (login.this, Forgot_password.class);
-                startActivity(intent);
+            });
+            laccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(login.this, register.class);
+                    startActivity(intent);
 //                finish();
-            }
-        });
+                }
+            });
+            showpassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (showpassword.isChecked()) {
+                        password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    } else {
+                        password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    }
+                }
+            });
+            forgotpassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(login.this, Forgot_password.class);
+                    startActivity(intent);
+//                finish();
+                }
+            });
+        }
     }
-
 
  public void login(String get_email,String get_password){
 
@@ -108,6 +118,10 @@ public class login extends AppCompatActivity {
                      if (task.isSuccessful()) {
                          Toast.makeText(login.this, "Authentication successful.",
                                  Toast.LENGTH_SHORT).show();
+                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                         editor.putString("status", "on");
+                         editor.putString("email", get_email);
+                         editor.apply();
                          Intent intent = new Intent (login.this, Homepage.class);
                             startActivity(intent);
                             finish();
