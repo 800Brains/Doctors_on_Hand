@@ -52,11 +52,12 @@ public class login extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("status", "").equals("on")) {
+        if(mAuth.getCurrentUser() != null && sharedPreferences.getString("status", "").equals("on")) {
             Intent intent = new Intent(login.this, Homepage.class);
             startActivity(intent);
             finish();
-        } else {
+        }
+        else {
 
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,7 +108,8 @@ public class login extends AppCompatActivity {
 //                finish();
                 }
             });
-        }
+      //  }
+}
     }
 
  public void login(String get_email,String get_password){

@@ -55,8 +55,12 @@ public class Homepage extends AppCompatActivity {
         note = findViewById(R.id.noti);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        user_details();
-
+//        if(mAuth.getCurrentUser() == null) {
+//            Intent intent = new Intent (Homepage.this, login.class);
+//            startActivity(intent);
+//        }
+//        else
+            user_details();
         // profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override

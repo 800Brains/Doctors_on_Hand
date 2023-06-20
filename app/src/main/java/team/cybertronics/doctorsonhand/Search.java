@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -43,7 +44,7 @@ public class Search extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth;
 
-
+    SharedPreferences sharedPreferences;
     RecyclerView recycleView;
     Adapter_Doctors Adapter_Doctors;
     Model_Doctos model_doctos1;
@@ -64,6 +65,7 @@ public class Search extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter_doctors);
         progressBar = new ProgressDialog(this);
+
         db = FirebaseFirestore.getInstance();
         this.userList = userList;
         Onload();
@@ -128,7 +130,7 @@ public class Search extends AppCompatActivity {
                     Model_Doctos model_doctos = ds.getValue(Model_Doctos.class);
 
                     //get all users except the one signed im
-                    if (!model_doctos.getUid().equals(fuser.getUid())) {
+                    if (!model_doctos.getUser_id().equals(fuser.getUid())) {
                         userList.add(model_doctos);
 
                     }
@@ -165,15 +167,19 @@ public class Search extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-        //search view
         MenuItem item = menu.findItem(R.id.action_search);
         MenuItem item1 = menu.findItem(R.id.action_logout);
+        //check the search view properly it has issues
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-
-        //search view listener
+        //search view
         item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
                 Intent intent = new Intent(Search.this, login.class);
                 startActivity(intent);
                 return false;
